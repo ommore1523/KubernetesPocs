@@ -1,0 +1,11 @@
+button{
+    padding: 5px 10px;
+    background-color: aquamarine;
+    border: 2px solid salmon;
+    border-radius: 10px;
+}
+
+div{
+    margin: 10px;
+    margin-right: 10px;
+}
