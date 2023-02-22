@@ -8,6 +8,8 @@
 # kubectl create -f svc.yaml;
 # kubectl create -f has.yaml;
 # kubectl apply -f role.yaml
+# kubectl apply -f role-binding.yaml
+
 
 
 kubectl delete -f svc.yaml
@@ -16,4 +18,5 @@ kubectl delete -f pvc.yaml;
 kubectl delete -f pv.yaml
 kubectl delete -f secrets.yaml;
 kubectl delete -f has.yaml;
-kubectl delete -f role.yaml;
+# kubectl delete -f role.yaml;
+# kubectl delete -f role-binding.yaml

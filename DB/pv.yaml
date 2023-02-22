@@ -10,6 +10,6 @@ spec:
     storage: 2Gi
   accessModes:
     - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Retain # Recycle  delete hostpath    # Delete (for deleteing external disk like ebs) # Retain (keep)
+  persistentVolumeReclaimPolicy: Retain     #1/ Recycle  delete hostpath    # Delete (for deleteing external disk like ebs) # Retain (keep)
   hostPath:
-    path: "/mnt/data"
+    path: "/home/omkar/Documents/Other/swapnil_app/angular-python-flask-demo/Volumes"

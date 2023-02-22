@@ -12,7 +12,7 @@ spec:
       labels:
         app: db-pod
         type: db-type-pod
-        
+
     spec:
       containers:
         - name: web-db
@@ -29,7 +29,7 @@ spec:
             - name: POSTGRES_DB
               value: postgresdb
             - name: POSTGRES_USER
-              value:  postgres
+              value: postgres
             - name: POSTGRES_PASSWORD
               value: postgres
             - name: PGDATA
@@ -38,7 +38,6 @@ spec:
           ports:
             - containerPort: 5432
 
-            
           # readinessProbe: # remove the container if not healty
           #   exec:
           #     command:
@@ -58,11 +57,10 @@ spec:
           startupProbe: # It will check at starting level.. ONce container add to healthy and after app crashes it will not care
             exec:
               command:
-              - cat
-              - /var/lib/postgresql/data/pgdata/om.txt
+                - cat
+                - /var/lib/postgresql/data/pgdata/om.txt
             failureThreshold: 10
             periodSeconds: 5
-
 
           resources:
             requests:
@@ -71,11 +69,31 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          
+
           volumeMounts:
             - name: psql-persistent-volume
               mountPath: /var/lib/postgresql/data
 
+      # NOTE: Node will only accept toleration matching pods
+      # tolerations:  
+      # - key: "app" 
+      #   operator: "Equal"
+      #   value: "db"
+      #   effect: "NoSchedule"
+
+      # NOTE: Pods will execute on label macthing nodes.
+      # nodeSelector:
+      #   app: db
+
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: app
+      #           operator: In
+      #           values:
+      #           - db
       volumes:
         - name: psql-persistent-volume
           persistentVolumeClaim:
@@ -94,4 +112,4 @@ spec:
   selector:
     matchLabels:
       type: db-type-pod # pod label matching
-  # replicas: 1
+  # replicas: 4

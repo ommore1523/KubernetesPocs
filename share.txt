@@ -1,0 +1,2 @@
+kubeadm join 192.168.1.101:6443 --token biibus.dqfnoiydlx1srolx \
+	--discovery-token-ca-cert-hash sha256:057d1525fc5fe43be6cc4c7f69efde50feef45ae099236c58d3e1c23e3bb3ad8 
